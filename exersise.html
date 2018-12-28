@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="stars.css" />
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script src="main.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+
+        for(var j = 0; j < 1000; j+=100)
+        {
+            for(var i = 0; i < 1000; i+=100)
+            {
+                var center = new Point(i, j);
+                var points = 12;
+                var radius1 = 30;
+                var radius2 = 10;
+                var path = new Path.Star(center, points, radius1, radius2);
+                path.fillColor = '#96deda';
+            }
+        }
+    </script>
+
+    
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>

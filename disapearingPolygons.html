@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="stars.css" />
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+        //on key down, create a polygon
+        var polygons =[];
+        function onKeyDown(event) {
+            var maxPoint = new Point(view.size.width, view.size.height);
+            //generate random points
+            var randomPoint = Point.random();
+            var pointCreation = maxPoint * randomPoint;
+                var center = new Point(pointCreation, 50);
+                //creates a polygon with sides between 5 and 13
+                var points = Math.floor(Math.random() * 13) + 5  ;
+                var radius1 = Math.floor(Math.random() * 100) + 50;
+                var radius2 = Math.floor(Math.random() * 200) + 80;
+                var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+                var polyCreation = new Path.Star({
+                    center: center,
+                    points: points,
+                    radius1: radius1,
+                    radius2: radius2,
+                    fillColor: hue
+                })
+                polygons.push(polyCreation);
+                console.log(polygons.length)
+
+        };
+        function onFrame(event){
+            for(var i =0; i < polygons.length; i++)
+            {
+                polygons[i].scale(.94);
+                polygons[i].fillColor.hue +=3;
+            }
+        }
+        
+       
+    </script>
+
+    
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
